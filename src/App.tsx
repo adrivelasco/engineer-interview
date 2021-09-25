@@ -1,6 +1,6 @@
 import { Box, Button, ChakraProvider, Flex, Text } from '@chakra-ui/react'
 
-import { ChallengeComponent } from './ChallengeComponent'
+import { ChallengeComponent } from './components/ChallengeComponent'
 import './App.css'
 
 export const App = () => (
