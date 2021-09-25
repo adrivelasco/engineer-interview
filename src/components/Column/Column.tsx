@@ -2,7 +2,7 @@ import { Box, Flex, FlexProps, Text } from "@chakra-ui/react";
 
 export interface ColumnProps extends FlexProps {
   title: string;
-};
+}
 
 export const Column = ({ children, title, ...props }: ColumnProps) => (
   <Flex
@@ -23,13 +23,7 @@ export const Column = ({ children, title, ...props }: ColumnProps) => (
     >
       {title}
     </Text>
-    <Box
-      position="relative"
-      flex={1}
-      bg="blackAlpha.50"
-      px={2}
-      py={2}
-    >
+    <Box position="relative" flex={1} bg="blackAlpha.50" px={2} py={2}>
       {children}
     </Box>
   </Flex>

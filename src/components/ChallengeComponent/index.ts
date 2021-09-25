@@ -1,1 +1,1 @@
-export * from './ChallengeComponent';
+export * from "./ChallengeComponent";

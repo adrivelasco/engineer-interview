@@ -1,23 +1,26 @@
 ## Video Intro
+
 https://www.loom.com/share/3df7fcb5424644638b00724cb178e2ff
 
-* [Getting Started with the Every.io engineering challenge.](#getting-started-with-the-everyio-engineering-challenge)
-  * [The biggest factor will be your code:](#the-biggest-factor-will-be-your-code)
-  * [Requirements](#requirements)
-  * [Quick Start](#quick-start)
-* [Original CRA README below](#original-cra-readme-below)
-  * [Getting Started with Create React App](#getting-started-with-create-react-app)
-  * [Available Scripts](#available-scripts)
-    * [`yarn start`](#yarn-start)
-    * [`yarn test`](#yarn-test)
-    * [`yarn build`](#yarn-build)
-    * [`yarn eject`](#yarn-eject)
-  * [Learn More](#learn-more)
-
+- [Getting Started with the Every.io engineering challenge.](#getting-started-with-the-everyio-engineering-challenge)
+  - [The biggest factor will be your code:](#the-biggest-factor-will-be-your-code)
+  - [Requirements](#requirements)
+  - [Quick Start](#quick-start)
+- [Original CRA README below](#original-cra-readme-below)
+  - [Getting Started with Create React App](#getting-started-with-create-react-app)
+  - [Available Scripts](#available-scripts)
+    - [`yarn start`](#yarn-start)
+    - [`yarn test`](#yarn-test)
+    - [`yarn build`](#yarn-build)
+    - [`yarn eject`](#yarn-eject)
+  - [Learn More](#learn-more)
 
 # Getting Started with the Every.io engineering challenge.
+
 Thanks for taking the time to complete the Every.io code challenge. Don't worry, it's not too hard, and please do not spend more than an hour or two. We know you have lots of these to do, and it can be very time consuming. If you feel like adding fancy animations, or getting all hip and fresh with the design, go ahead, but it won't earn you any extra points.
+
 ## The biggest factor will be your code:
+
 1. How readable, is your code.
 2. How did you organize your components.
 3. Are there any bugs.
@@ -27,6 +30,7 @@ Thanks for taking the time to complete the Every.io code challenge. Don't worry,
 [See the prototype for an example.](https://www.figma.com/proto/kd49ArXbBt0vi1kBSLkmC1/Code-Challenge?node-id=1%3A2&scaling=min-zoom&page-id=0%3A1)
 
 You will be creating a basic todo list, with the following functionality.
+
 1. The list has 3 states. Each represented by a column. Similar to Trello.
    1. `Todo`
    2. `In Progress`
@@ -43,15 +47,17 @@ You will be creating a basic todo list, with the following functionality.
 5. There should be form with a text input below the buttons. When the user submits the form, the text from the text input should be added to a new todo item in the `Todo` column.
 
 ## Quick Start
+
 1. npm install
 2. npm run start
 3. open your browser to http://localhost:3000
 4. Delete the `h2` from the component in `src/ChallengeComponent.tsx`
 5. Add your code to that component.
 
+---
 
------------------------
 # Original CRA README below
+
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

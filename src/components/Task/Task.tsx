@@ -5,9 +5,14 @@ export interface TaskProps extends FlexProps {
   description: string;
   onMoveLeft?: () => void;
   onMoveRight?: () => void;
-};
+}
 
-export const Task = ({ description, onMoveLeft, onMoveRight, ...props }: TaskProps) => (
+export const Task = ({
+  description,
+  onMoveLeft,
+  onMoveRight,
+  ...props
+}: TaskProps) => (
   <Flex
     alignItems="center"
     bg="white"
@@ -21,9 +26,7 @@ export const Task = ({ description, onMoveLeft, onMoveRight, ...props }: TaskPro
     <Button onClick={onMoveLeft} bg="red.400" colorScheme="red">
       <ArrowBackIcon />
     </Button>
-    <Text>
-      {description}
-    </Text>
+    <Text>{description}</Text>
     <Button onClick={onMoveRight} bg="green.400" colorScheme="green">
       <ArrowForwardIcon />
     </Button>

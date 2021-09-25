@@ -1,14 +1,13 @@
-import { Box } from '@chakra-ui/react'
+import { Box } from "@chakra-ui/react";
 
-import { Board } from '../Board'
-import { Column } from '../Column'
-import { FormCreateTask } from '../FormCreateTask'
-import { Task } from '../Task'
+import { Board } from "../Board";
+import { Column } from "../Column";
+import { FormCreateTask } from "../FormCreateTask";
+import { Task } from "../Task";
 
 export const ChallengeComponent = () => {
   return (
     <Box px={10} py={10} height="auto">
-
       <Board>
         <Column title="To Do">
           <Task description="Move the land" />
@@ -24,7 +23,6 @@ export const ChallengeComponent = () => {
       <Box position="relative" maxWidth={400}>
         <FormCreateTask />
       </Box>
-
     </Box>
-  )
-}
+  );
+};

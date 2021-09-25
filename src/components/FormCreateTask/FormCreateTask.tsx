@@ -1,7 +1,7 @@
 import { AddIcon } from "@chakra-ui/icons";
 import { Button, Flex, FlexProps, Input } from "@chakra-ui/react";
 
-export interface FormCreateTaskProps extends FlexProps {};
+export interface FormCreateTaskProps extends FlexProps {}
 
 export const FormCreateTask = ({ ...props }: FormCreateTaskProps) => {
   return (

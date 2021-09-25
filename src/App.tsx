@@ -1,16 +1,13 @@
-import { Box, Button, ChakraProvider, Flex, Text } from '@chakra-ui/react'
+import { Box, Button, ChakraProvider, Flex, Text } from "@chakra-ui/react";
 
-import { ChallengeComponent } from './components/ChallengeComponent'
-import './App.css'
+import { ChallengeComponent } from "./components/ChallengeComponent";
+import "./App.css";
 
 export const App = () => (
   <ChakraProvider>
     <Box width="100%" maxWidth={1400} mx="auto" py={6}>
       <Box as="header" py={5} mb={3}>
-        <Flex
-          alignItems="center"
-          justifyContent="space-between"
-        >
+        <Flex alignItems="center" justifyContent="space-between">
           <Text fontWeight="bold" fontSize="x-large">
             Welcome To The Every.io Code Challenge.
           </Text>
