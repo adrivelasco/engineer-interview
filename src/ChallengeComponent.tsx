@@ -1,10 +1,29 @@
-import React from 'react'
+import { Box } from '@chakra-ui/react'
+import { Board } from './components/Board'
+import { Column } from './components/Column'
+import { FormCreateTask } from './components/FormCreateTask'
+import { Task } from './components/Task'
 
 export function ChallengeComponent() {
   return (
-    <>
-      {/* Delete this h2, and add your own code here. */}
-      <h2 style={{ textAlign: 'center', paddingTop: 200, paddingBottom: 200 }}>Your code goes here</h2>
-    </>
+    <Box px={10} py={10} height="auto">
+
+      <Board>
+        <Column title="To Do">
+          <Task description="Move the land" />
+        </Column>
+        <Column title="In Progress">
+          <Task description="Move the land" />
+        </Column>
+        <Column title="Done">
+          <Task description="Move the land" />
+        </Column>
+      </Board>
+
+      <Box position="relative" maxWidth={400}>
+        <FormCreateTask />
+      </Box>
+
+    </Box>
   )
 }
