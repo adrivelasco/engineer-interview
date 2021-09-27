@@ -6,12 +6,13 @@ export interface ColumnProps extends FlexProps {
 
 export const Column = ({ children, title, ...props }: ColumnProps) => (
   <Flex
-    _last={{ mr: 0 }}
     flex={1}
     flexDirection="column"
     height="100%"
-    mr={2}
+    mr={{ base: 0, md: 2 }}
+    mb={{ base: 3, md: 0 }}
     position="relative"
+    _last={{ mr: 0, mb: 0 }}
     {...props}
   >
     <Text

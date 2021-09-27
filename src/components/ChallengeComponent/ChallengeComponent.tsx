@@ -15,7 +15,13 @@ const ChallengeComponent = () => {
   };
 
   return (
-    <Box px={10} py={10} height="auto">
+    <Box
+      p={{ base: 4, md: 10 }}
+      height="auto"
+      flexDirection={{ base: "column-reverse", md: "initial" }}
+      display={{ base: "flex", md: "block" }}
+      width="100%"
+    >
       <Board>
         {status.map(({ id, name }, index) => {
           const tasksByStatus = tasks.filter(({ status }) => id === status);
