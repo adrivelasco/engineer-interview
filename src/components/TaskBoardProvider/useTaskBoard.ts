@@ -2,27 +2,20 @@ import { useCallback, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import { Status, Task } from "../../types";
-
-export const initialStatus = [
-  { id: "1", name: "To Do" },
-  { id: "2", name: "In Progress" },
-  { id: "3", name: "Done" },
-];
+import * as defaultValues from "./defaultValues";
 
 export const useTaskBoard = () => {
-  const [tasks, setTasks] = useState<Task[]>([]);
-  const [status] = useState<Status[]>(initialStatus);
+  const [tasks, setTasks] = useState<Task[]>(defaultValues.tasks);
+  const [status] = useState<Status[]>(defaultValues.status);
 
-  const editTask = (id: Task["id"], callback: (task: Task) => Task) => {
-    setTasks((prevState) =>
-      prevState.map((task) => {
-        if (task.id === id) {
-          return callback(task);
-        }
-        return task;
-      })
-    );
-  };
+  const editTask = useCallback(
+    (id: Task["id"], callback: (task: Task) => Task) => {
+      setTasks((prevState) =>
+        prevState.map((task) => (task.id === id ? callback(task) : task))
+      );
+    },
+    []
+  );
 
   const findStatusIndex = useCallback(
     (id: Status["id"]) => {
@@ -37,9 +30,9 @@ export const useTaskBoard = () => {
         id: uuidv4(),
         description,
         status: status[0].id,
-      } as Task;
+      };
 
-      setTasks((prevState) => [...prevState, task]);
+      setTasks((prevState) => [task, ...prevState]);
     },
     [status]
   );
@@ -56,7 +49,7 @@ export const useTaskBoard = () => {
         };
       });
     },
-    [status, findStatusIndex]
+    [status, findStatusIndex, editTask]
   );
 
   const moveToRight = useCallback(
@@ -71,7 +64,7 @@ export const useTaskBoard = () => {
         };
       });
     },
-    [status, findStatusIndex]
+    [status, findStatusIndex, editTask]
   );
 
   return {
