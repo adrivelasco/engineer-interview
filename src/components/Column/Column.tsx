@@ -17,13 +17,20 @@ export const Column = ({ children, title, ...props }: ColumnProps) => (
     <Text
       borderBottom="3px solid"
       borderColor="blackAlpha.200"
+      fontWeight="bold"
       mb={2}
       py={2}
-      fontWeight="bold"
     >
       {title}
     </Text>
-    <Box position="relative" flex={1} bg="blackAlpha.50" px={2} py={2}>
+    <Box
+      bg="blackAlpha.50"
+      flex={1}
+      overflowY="auto"
+      position="relative"
+      px={2}
+      py={2}
+    >
       {children}
     </Box>
   </Flex>
