@@ -23,11 +23,21 @@ export const Task = ({
     width="full"
     {...props}
   >
-    <Button onClick={onMoveLeft} bg="red.400" colorScheme="red">
+    <Button
+      bg="red.400"
+      colorScheme="red"
+      disabled={!Boolean(onMoveLeft)}
+      onClick={onMoveLeft}
+    >
       <ArrowBackIcon />
     </Button>
-    <Text>{description}</Text>
-    <Button onClick={onMoveRight} bg="green.400" colorScheme="green">
+    <Text px={2}>{description}</Text>
+    <Button
+      bg="green.400"
+      colorScheme="green"
+      disabled={!Boolean(onMoveRight)}
+      onClick={onMoveRight}
+    >
       <ArrowForwardIcon />
     </Button>
   </Flex>
