@@ -8,7 +8,7 @@ import {
   TaskBoardProvider,
   TaskBoardProviderProps,
   useTaskBoardContext,
-} from "../TaskBoardProvider";
+} from "../../context/TaskBoardProvider";
 import * as defaultValues from "./defaultValues";
 
 const ChallengeComponent = () => {
