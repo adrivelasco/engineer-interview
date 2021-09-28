@@ -5,6 +5,7 @@ export const Board = ({ ...props }: FlexProps) => (
     flexDirection={{ base: "column", md: "row" }}
     height={{ base: "1200px", md: "500px" }}
     py={2}
+    overflowX="auto"
     w="full"
     {...props}
   />

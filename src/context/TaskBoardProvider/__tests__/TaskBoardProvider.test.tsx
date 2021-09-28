@@ -12,7 +12,7 @@ describe("TaskBoardProvider", () => {
       wrapper: ({ children }: TaskBoardProviderProps) => {
         return (
           <TaskBoardProvider
-            status={[{ id: "1", name: "To Do" }]}
+            statuses={[{ id: "1", name: "To Do" }]}
             tasks={[
               { id: "1", status: "1", description: "Task 1" },
               { id: "1", status: "1", description: "Task 2" },
@@ -24,7 +24,7 @@ describe("TaskBoardProvider", () => {
       },
     });
 
-    expect(result.current.status.length).toBe(1);
+    expect(result.current.statuses.length).toBe(1);
     expect(result.current.tasks.length).toBe(2);
 
     expect(result.current.addTask).toBeDefined();

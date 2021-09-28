@@ -5,7 +5,7 @@ import { ChallengeComponent } from "../ChallengeComponent";
 describe("ChallengeComponent", () => {
   it("renders an empty board", () => {
     const { getByTestId } = render(
-      <ChallengeComponent status={[]} tasks={[]} />
+      <ChallengeComponent statuses={[]} tasks={[]} />
     );
 
     const board = getByTestId("board");
@@ -13,10 +13,10 @@ describe("ChallengeComponent", () => {
     expect(board.children.length).toBe(0);
   });
 
-  it("renders the right number of status columns and tasks within the board", () => {
+  it("renders the right number of statuses columns and tasks within the board", () => {
     const { getAllByTestId } = render(
       <ChallengeComponent
-        status={[{ id: "1", name: "To Do" }]}
+        statuses={[{ id: "1", name: "To Do" }]}
         tasks={[{ id: "1", status: "1", description: "Task" }]}
       />
     );

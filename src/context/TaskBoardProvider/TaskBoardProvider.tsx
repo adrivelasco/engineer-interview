@@ -9,11 +9,11 @@ export interface TaskBoardProviderProps extends UseTaskBoardProps {
 
 export const TaskBoardProvider = ({
   children,
-  status,
+  statuses,
   tasks,
 }: TaskBoardProviderProps) => {
   const context = useTaskBoard({
-    status,
+    statuses,
     tasks,
   });
 

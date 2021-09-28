@@ -4,12 +4,12 @@ import { v4 as uuidv4 } from "uuid";
 import { Status, Task } from "../../types";
 
 export interface UseTaskBoardProps {
-  status?: Status[];
+  statuses?: Status[];
   tasks?: Task[];
 }
 
 export const useTaskBoard = (initialValues?: UseTaskBoardProps) => {
-  const [status] = useState<Status[]>(initialValues?.status ?? []);
+  const [statuses] = useState<Status[]>(initialValues?.statuses ?? []);
   const [tasks, setTasks] = useState<Task[]>(initialValues?.tasks ?? []);
 
   const editTask = useCallback(
@@ -22,8 +22,8 @@ export const useTaskBoard = (initialValues?: UseTaskBoardProps) => {
   );
 
   const findStatusIndex = useCallback(
-    (id: Status["id"]) => status.findIndex((s) => s.id === id),
-    [status]
+    (id: Status["id"]) => statuses.findIndex((status) => status.id === id),
+    [statuses]
   );
 
   const moveTask = useCallback(
@@ -31,7 +31,7 @@ export const useTaskBoard = (initialValues?: UseTaskBoardProps) => {
       editTask(taskId, (task) => {
         const currentStatusIndex = findStatusIndex(task.status);
         const nextStatus =
-          status[currentStatusIndex + (direction === "backward" ? -1 : 1)];
+          statuses[currentStatusIndex + (direction === "backward" ? -1 : 1)];
 
         return {
           ...task,
@@ -39,12 +39,12 @@ export const useTaskBoard = (initialValues?: UseTaskBoardProps) => {
         };
       });
     },
-    [editTask, findStatusIndex, status]
+    [editTask, findStatusIndex, statuses]
   );
 
   const addTask = useCallback(
     ({ description }: { description: string }) => {
-      const initialStatus = status[0]?.id;
+      const initialStatus = statuses[0]?.id;
 
       if (!initialStatus) {
         throw new Error(
@@ -60,7 +60,7 @@ export const useTaskBoard = (initialValues?: UseTaskBoardProps) => {
 
       setTasks((prevState) => [task, ...prevState]);
     },
-    [status]
+    [statuses]
   );
 
   const moveToLeft = moveTask("backward");
@@ -71,7 +71,7 @@ export const useTaskBoard = (initialValues?: UseTaskBoardProps) => {
     addTask,
     moveToLeft,
     moveToRight,
-    status,
+    statuses,
     tasks,
   };
 };

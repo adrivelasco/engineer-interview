@@ -9,6 +9,7 @@ export const Column = ({ children, title, ...props }: ColumnProps) => (
     flex={1}
     flexDirection="column"
     height="100%"
+    minWidth={320}
     mr={{ base: 0, md: 2 }}
     mb={{ base: 3, md: 0 }}
     position="relative"

@@ -1,18 +1,18 @@
 import { Box } from "@chakra-ui/react";
 
-import { Board } from "../Board";
-import { Column } from "../Column";
-import { FormCreateTask, FormFields } from "../FormCreateTask";
-import { Task } from "../Task";
 import {
   TaskBoardProvider,
   TaskBoardProviderProps,
   useTaskBoardContext,
 } from "../../context/TaskBoardProvider";
-import * as defaultValues from "./defaultValues";
+import { Board } from "../Board";
+import { Column } from "../Column";
+import { FormCreateTask, FormFields } from "../FormCreateTask";
+import { Task } from "../Task";
+import * as mocks from "./mocks";
 
 const ChallengeComponent = () => {
-  const { tasks, status, addTask, moveToRight, moveToLeft } =
+  const { tasks, statuses, addTask, moveToRight, moveToLeft } =
     useTaskBoardContext();
 
   const handleAddTask = ({ description }: FormFields) => {
@@ -28,11 +28,11 @@ const ChallengeComponent = () => {
       width="100%"
     >
       <Board data-testid="board">
-        {status.map(({ id, name }, index) => {
+        {statuses.map(({ id, name }, index) => {
           const tasksByStatus = tasks.filter(({ status }) => id === status);
 
           const isFirstColumn = index === 0;
-          const isLastColumn = index === status.length - 1;
+          const isLastColumn = index === statuses.length - 1;
 
           return (
             <Column key={id} title={name} data-testid="board-column-status">
@@ -68,10 +68,11 @@ const ChallengeComponent = () => {
 };
 
 const ChallengeComponentContainer = (props: TaskBoardProviderProps) => {
-  const { tasks, status } = props.tasks && props.status ? props : defaultValues;
+  const statuses = props.statuses ?? mocks.statuses;
+  const tasks = props.tasks ?? mocks.tasks;
 
   return (
-    <TaskBoardProvider tasks={tasks} status={status}>
+    <TaskBoardProvider tasks={tasks} statuses={statuses}>
       <ChallengeComponent />
     </TaskBoardProvider>
   );

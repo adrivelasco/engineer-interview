@@ -7,26 +7,26 @@ describe("useTaskBoard", () => {
   it("should return empty statuses and tasks", () => {
     const { result } = renderHook(() => useTaskBoard());
 
-    expect(result.current.status.length).toBe(0);
+    expect(result.current.statuses.length).toBe(0);
     expect(result.current.tasks.length).toBe(0);
   });
 
   it("should return valid statuses and tasks", () => {
     const { result } = renderHook(() =>
       useTaskBoard({
-        status: [{ id: "1", name: "To Do" }],
+        statuses: [{ id: "1", name: "To Do" }],
         tasks: [{ id: "1", status: "1", description: "Test" }],
       })
     );
 
-    expect(result.current.status[0].name).toBe("To Do");
+    expect(result.current.statuses[0].name).toBe("To Do");
     expect(result.current.tasks[0].description).toBe("Test");
   });
 
   it("should add a task", () => {
     const { result } = renderHook(() =>
       useTaskBoard({
-        status: [{ id: "1", name: "To Do" }],
+        statuses: [{ id: "1", name: "To Do" }],
       })
     );
 
@@ -50,10 +50,10 @@ describe("useTaskBoard", () => {
     expect(addTask).toThrow(Error);
   });
 
-  it("should move task to left status", () => {
+  it("should move task to the previous status", () => {
     const { result } = renderHook(() =>
       useTaskBoard({
-        status: [
+        statuses: [
           { id: "1", name: "To Do" },
           { id: "2", name: "In Progress" },
           { id: "3", name: "QA" },
@@ -70,10 +70,10 @@ describe("useTaskBoard", () => {
     expect(result.current.tasks[0].status).toBe("1");
   });
 
-  it("should move task to next status", () => {
+  it("should move task to the next status", () => {
     const { result } = renderHook(() =>
       useTaskBoard({
-        status: [
+        statuses: [
           { id: "1", name: "To Do" },
           { id: "2", name: "In Progress" },
           { id: "3", name: "QA" },
@@ -93,7 +93,7 @@ describe("useTaskBoard", () => {
   it("should return the same status if there is no more statuses", () => {
     const { result } = renderHook(() =>
       useTaskBoard({
-        status: [{ id: "1", name: "To Do" }],
+        statuses: [{ id: "1", name: "To Do" }],
         tasks: [{ id: "1", status: "2", description: "Test" }],
       })
     );

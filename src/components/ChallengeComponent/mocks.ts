@@ -1,4 +1,4 @@
-export const status = [
+export const statuses = [
   { id: "1", name: "To Do" },
   { id: "2", name: "In Progress" },
   { id: "3", name: "Done" },
