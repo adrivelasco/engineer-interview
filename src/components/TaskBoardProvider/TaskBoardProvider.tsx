@@ -1,14 +1,21 @@
 import { ReactNode } from "react";
 
 import { TaskBoardContext } from "./TaskBoardContext";
-import { useTaskBoard } from "./useTaskBoard";
+import { useTaskBoard, UseTaskBoardProps } from "./useTaskBoard";
 
-export interface TaskBoardProviderProps {
-  children: ReactNode;
+export interface TaskBoardProviderProps extends UseTaskBoardProps {
+  children?: ReactNode;
 }
 
-export const TaskBoardProvider = ({ children }: TaskBoardProviderProps) => {
-  const context = useTaskBoard();
+export const TaskBoardProvider = ({
+  children,
+  status,
+  tasks,
+}: TaskBoardProviderProps) => {
+  const context = useTaskBoard({
+    status,
+    tasks,
+  });
 
   return <TaskBoardContext value={context}>{children}</TaskBoardContext>;
 };

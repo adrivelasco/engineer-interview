@@ -2,11 +2,19 @@ import { useCallback, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import { Status, Task } from "../../types";
-import * as defaultValues from "./defaultValues";
 
-export const useTaskBoard = () => {
-  const [tasks, setTasks] = useState<Task[]>(defaultValues.tasks);
-  const [status] = useState<Status[]>(defaultValues.status);
+const initialsValues = { status: [], tasks: [] };
+
+export interface UseTaskBoardProps {
+  status?: Status[];
+  tasks?: Task[];
+}
+
+export const useTaskBoard = (values?: UseTaskBoardProps) => {
+  const [status] = useState<Status[]>(values?.status ?? initialsValues.status);
+  const [tasks, setTasks] = useState<Task[]>(
+    values?.tasks ?? initialsValues.tasks
+  );
 
   const editTask = useCallback(
     (id: Task["id"], callback: (task: Task) => Task) => {
@@ -25,11 +33,19 @@ export const useTaskBoard = () => {
   );
 
   const addTask = useCallback(
-    ({ description }) => {
+    ({ description }: { description: string }) => {
+      const initialStatus = status[0]?.id;
+
+      if (!initialStatus) {
+        throw new Error(
+          "You should have at least one status before adding tasks"
+        );
+      }
+
       const task = {
         id: uuidv4(),
         description,
-        status: status[0].id,
+        status: initialStatus,
       };
 
       setTasks((prevState) => [task, ...prevState]);
