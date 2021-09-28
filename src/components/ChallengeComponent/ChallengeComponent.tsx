@@ -4,7 +4,12 @@ import { Board } from "../Board";
 import { Column } from "../Column";
 import { FormCreateTask, FormFields } from "../FormCreateTask";
 import { Task } from "../Task";
-import { TaskBoardProvider, useTaskBoardContext } from "../TaskBoardProvider";
+import {
+  TaskBoardProvider,
+  TaskBoardProviderProps,
+  useTaskBoardContext,
+} from "../TaskBoardProvider";
+import * as defaultValues from "./defaultValues";
 
 const ChallengeComponent = () => {
   const { tasks, status, addTask, moveToRight, moveToLeft } =
@@ -16,13 +21,13 @@ const ChallengeComponent = () => {
 
   return (
     <Box
-      p={{ base: 4, md: 10 }}
-      height="auto"
-      flexDirection={{ base: "column-reverse", md: "initial" }}
       display={{ base: "flex", md: "block" }}
+      flexDirection={{ base: "column-reverse", md: "initial" }}
+      height="auto"
+      p={{ base: 4, md: 10 }}
       width="100%"
     >
-      <Board>
+      <Board data-testid="board">
         {status.map(({ id, name }, index) => {
           const tasksByStatus = tasks.filter(({ status }) => id === status);
 
@@ -30,7 +35,7 @@ const ChallengeComponent = () => {
           const isLastColumn = index === status.length - 1;
 
           return (
-            <Column key={id} title={name}>
+            <Column key={id} title={name} data-testid="board-column-status">
               {tasksByStatus.map(({ id, description }) => {
                 const handleOnMoveLeft = () => {
                   moveToLeft(id);
@@ -42,6 +47,7 @@ const ChallengeComponent = () => {
 
                 return (
                   <Task
+                    data-testid="board-task"
                     description={description}
                     key={id}
                     mb={2}
@@ -61,10 +67,14 @@ const ChallengeComponent = () => {
   );
 };
 
-const ChallengeComponentWithContext = () => (
-  <TaskBoardProvider>
-    <ChallengeComponent />
-  </TaskBoardProvider>
-);
+const ChallengeComponentContainer = (props: TaskBoardProviderProps) => {
+  const { tasks, status } = props.tasks && props.status ? props : defaultValues;
 
-export { ChallengeComponentWithContext as ChallengeComponent };
+  return (
+    <TaskBoardProvider tasks={tasks} status={status}>
+      <ChallengeComponent />
+    </TaskBoardProvider>
+  );
+};
+
+export { ChallengeComponentContainer as ChallengeComponent };
