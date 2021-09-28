@@ -40,12 +40,17 @@ export const FormCreateTask = ({
           placeholder="Add Task"
           {...register("description", { required: true, minLength: 1 })}
         />
-        <Button colorScheme="blue" type="submit">
+        <Button colorScheme="blue" role="button" type="submit">
           <AddIcon />
         </Button>
       </Flex>
       {errors.description && (
-        <Text color="red.500" fontSize="sm" fontWeight="medium">
+        <Text
+          color="red.500"
+          data-testid="message-error"
+          fontSize="sm"
+          fontWeight="medium"
+        >
           This field is required
         </Text>
       )}
